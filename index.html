@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fotobiomoduláció & LED Terápia – Orvosi Edukációs Infografika</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep: #0d1f3c;
+    --blue: #1a3a6b;
+    --sky: #2d7dd2;
+    --cyan: #00b4d8;
+    --teal: #06d6a0;
+    --gold: #f4a261;
+    --red-light: #e63946;
+    --yellow-light: #ffd166;
+    --blue-light: #4cc9f0;
+    --purple: #7b2d8b;
+    --nir: #9d4edd;
+    --text: #e8f0fe;
+    --text-dim: #8ba3c7;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, #0a1628 0%, #0d2147 50%, #0a1628 100%);
+    padding: 80px 60px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(45,125,210,0.18) 0%, transparent 70%);
+  }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 30%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 680px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .section { padding: 70px 0; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-subtitle {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* ─── WAVELENGTH SECTION ─── */
+  .wave-section { background: var(--deep); }
+  .wave-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .wave-card {
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .wave-card:hover { transform: translateY(-4px); z-index: 2; }
+  .wave-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .wave-card.blue { background: rgba(76, 201, 240, 0.06); }
+  .wave-card.blue::before { background: var(--blue-light); }
+  .wave-card.yellow { background: rgba(255, 209, 102, 0.06); }
+  .wave-card.yellow::before { background: var(--yellow-light); }
+  .wave-card.red { background: rgba(230, 57, 70, 0.07); }
+  .wave-card.red::before { background: #ff6b6b; }
+  .wave-card.nir { background: rgba(157, 78, 221, 0.07); }
+  .wave-card.nir::before { background: var(--nir); }
+
+  .wave-nm {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .wave-card.blue .wave-nm { color: var(--blue-light); }
+  .wave-card.yellow .wave-nm { color: var(--yellow-light); }
+  .wave-card.red .wave-nm { color: #ff6b6b; }
+  .wave-card.nir .wave-nm { color: var(--nir); }
+
+  .wave-type { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 16px; }
+  .wave-layer {
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+  }
+  .wave-desc { font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; }
+
+  /* penetration bar */
+  .wave-bar-wrap { margin-top: 20px; }
+  .wave-bar-label { font-size: 0.68rem; color: var(--text-dim); margin-bottom: 4px; letter-spacing: 1px; text-transform: uppercase; }
+  .wave-bar { height: 4px; border-radius: 4px; background: rgba(255,255,255,0.08); overflow: hidden; }
+  .wave-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+  .wave-card.blue .wave-bar-fill { background: var(--blue-light); width: 20%; }
+  .wave-card.yellow .wave-bar-fill { background: var(--yellow-light); width: 35%; }
+  .wave-card.red .wave-bar-fill { background: #ff6b6b; width: 55%; }
+  .wave-card.nir .wave-bar-fill { background: var(--nir); width: 80%; }
+
+  /* ─── SPECS ─── */
+  .specs-section { background: var(--navy); }
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .spec-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .spec-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--sky));
+  }
+  .spec-icon { font-size: 2.4rem; margin-bottom: 16px; }
+  .spec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--cyan);
+  }
+  .spec-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+
+  /* ─── BENEFITS ─── */
+  .benefits-section { background: var(--deep); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .benefit-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .benefit-icon { font-size: 2rem; margin-bottom: 16px; }
+  .benefit-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .benefit-text { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+
+  /* ─── SYNERGY INTRO ─── */
+  .synergy-intro {
+    background: var(--navy);
+    padding: 70px 0;
+  }
+  .synergy-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .synergy-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  .synergy-card p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .synergy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .synergy-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+  }
+  .synergy-check {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: #050d1a;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .footer p { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 6px; }
+  .footer small { font-size: 0.68rem; color: rgba(255,255,255,0.2); }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 60px 24px 48px; }
+    .container { padding: 0 24px; }
+    .section { padding: 50px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-tag">Orvosi Edukációs Útmutató · 2026</div>
+  <h1>Fotobiomoduláció<br>& LED Terápia</h1>
+  <p>A fényterápia tudományos alapjai és gyakorlati alkalmazása<br>modern esztétikai kezelésekben</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WAVELENGTH ═══ -->
+<section class="wave-section section">
+  <div class="container">
+    <p class="section-label fade-up">01 · Hullámhossz Analízis</p>
+    <h2 class="section-title fade-up">A fény mint biológiai jel</h2>
+    <p class="section-subtitle fade-up">Minden hullámhossz különböző mélységben hat a bőrre</p>
+    <div class="wave-grid fade-up">
+      <div class="wave-card blue">
+        <div class="wave-nm">415</div>
+        <div class="wave-type">nm · Kék fény</div>
+        <div class="wave-layer">↳ Epidermisz</div>
+        <div class="wave-desc">Antibakteriális hatás. P.acne baktériumok porfirinjeit aktiválja, ideális aknés bőr kezelésére.</div>
+        <div class="wave-bar-wrap">
+          <div class="wave-bar-label">Penetráció mélysége</div>
+          <div class="wave-bar"><div class="wave-bar-fill"></div></div>
+        </div>
+      </div>
+      <div class="wave-card yellow">
+        <div class="wave-nm">605</div>
+        <div class="wave-type">nm · Sárga fény</div>
+        <div class="wave-layer">↳ Papilláris dermisz</div>
+        <div class="wave-desc">Pirosság csökkentése, bőr világosítása. Javítja a mikrocirkulációt és a bőr ragyogását.</div>
+        <div class="wave-bar-wrap">
+          <div class="wave-bar-label">Penetráció mélysége</div>
+          <div class="wave-bar"><div class="wave-bar-fill"></div></div>
+        </div>
+      </div>
+      <div class="wave-card red">
+        <div class="wave-nm">630</div>
+        <div class="wave-type">nm · Vörös fény</div>
+        <div class="wave-layer">↳ Dermisz (Irha)</div>
+        <div class="wave-desc">Kollagén és elasztin termelés fokozása. Fibroblaszt stimuláció, feszesebb és rugalmasabb bőr.</div>
+        <div class="wave-bar-wrap">
+          <div class="wave-bar-label">Penetráció mélysége</div>
+          <div class="wave-bar"><div class="wave-bar-fill"></div></div>
+        </div>
+      </div>
+      <div class="wave-card nir">
+        <div class="wave-nm">850</div>
+        <div class="wave-type">nm · Közeli NIR</div>
+        <div class="wave-layer">↳ Hipodermisz</div>
+        <div class="wave-desc">Mélyszöveti regeneráció. ATP-termelés fokozása, gyulladáscsökkentés, sebgyógyulás támogatása.</div>
+        <div class="wave-bar-wrap">
+          <div class="wave-bar-label">Penetráció mélysége</div>
+          <div class="wave-bar"><div class="wave-bar-fill"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ SPECS ═══ -->
+<section class="specs-section section">
+  <div class="container">
+    <p class="section-label fade-up">02 · Termék Specifikációk</p>
+    <h2 class="section-title fade-up">Ultima LED Beauty Mask</h2>
+    <p class="section-subtitle fade-up">Prémium minőségű, könnyű LED maszk otthoni használatra</p>
+    <div class="specs-grid">
+      <div class="spec-card fade-up">
+        <div class="spec-icon">⚖️</div>
+        <div class="spec-title">93 gramm</div>
+        <p class="spec-desc">Az egyik legkönnyebb LED maszk globálisan. Ultrakönnyű konstrukció a hosszú távú kényelemért.</p>
+      </div>
+      <div class="spec-card fade-up">
+        <div class="spec-icon">🧖‍♀️</div>
+        <div class="spec-title">Orvosi Szilikon</div>
+        <p class="spec-desc">Élelmiszeripari/orvosi minőségű szilikon. Rugalmas, bőrbarát, tökéletes illeszkedés minden arctípushoz.</p>
+      </div>
+      <div class="spec-card fade-up">
+        <div class="spec-icon">🔷</div>
+        <div class="spec-title">Méhsejt Design</div>
+        <p class="spec-desc">Légáteresztő szerkezet megelőzi a hő és nedvesség felhalmozódását. Higiénikus, kényelmes hosszú használat során.</p>
+      </div>
+      <div class="spec-card fade-up">
+        <div class="spec-icon">💧</div>
+        <div class="spec-title">IP67 Védelem</div>
+        <p class="spec-desc">Vízálló konstrukció, könnyen tisztítható. Biztonságos és tartós mindennapos használatra.</p>
+      </div>
+      <div class="spec-card fade-up">
+        <div class="spec-icon">👁️</div>
+        <div class="spec-title">Szemvédelem</div>
+        <p class="spec-desc">Beépített árnyékolás biztosítja a szemek védelmét. Biztonságosan lehet olvasni, tévézni, dolgozni használat közben.</p>
+      </div>
+      <div class="spec-card fade-up">
+        <div class="spec-icon">✨</div>
+        <div class="spec-title">3D LED Szerkezet</div>
+        <p class="spec-desc">Lebegő LED elrendezés egyenletes fényeloszlásért. Precíziós hullámhossz-szűrt fényforrások.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ BENEFITS ═══ -->
+<section class="benefits-section section">
+  <div class="container">
+    <p class="section-label fade-up">03 · Előnyök és Alkalmazás</p>
+    <h2 class="section-title fade-up">Miért válasszák páciensek és szakemberek?</h2>
+    <p class="section-subtitle fade-up">Otthoni aftercare a klinikai eredmények fenntartásáért</p>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">🔄</div>
+        <h3 class="benefit-title">Folyamatos Aktiválás</h3>
+        <p class="benefit-text">Napi használattal "bekapcsolva tartja" a kollagénaktivációt két klinikai kezelés között, fenntartva a regenerációs folyamatokat.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">🏠</div>
+        <h3 class="benefit-title">Otthoni Kényelem</h3>
+        <p class="benefit-text">Könnyű, hordozható konstrukció. Használható utazás közben, munkavégzés alatt, olvasás vagy relaxálás közben.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">🤝</div>
+        <h3 class="benefit-title">Professzionális Kiegészítő</h3>
+        <p class="benefit-text">Kiterjeszti és fokozza az Ultima Face klinikai kezelések hatásait. Támogatja más esztétikai beavatkozásokat is.</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon">🌐</div>
+        <h3 class="benefit-title">Minden Bőrtípusra</h3>
+        <p class="benefit-text">Kíméletes, non-invazív technológia. Biztonságos minden Fitzpatrick bőrtípus esetén, nincs downtime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ SYNERGY INTRO ═══ -->
+<section class="synergy-intro">
+  <div class="container">
+    <p class="section-label fade-up">04 · Klinikai Alkalmazás</p>
+    <h2 class="section-title fade-up">LED Terápia a Modern Esztétikában</h2>
+    <p class="section-subtitle fade-up">Hogyan integrálható más kezelésekkel?</p>
+    
+    <div class="synergy-card fade-up">
+      <h3>A Fotobiomoduláció Alapelve</h3>
+      <p>A LED-fény specifikus hullámhosszai aktiválják a sejtek mitokondriumait, fokozzák az ATP-termelést és serkentik a fibroblasztokat. Ez nem hőhatással történik, hanem fotokémiai reakciókon keresztül.</p>
+      
+      <p><strong>Potenciális szinergiák minimálinvazív kezelésekkel:</strong></p>
+      
+      <ul class="synergy-list">
+        <li>
+          <span class="synergy-check">✓</span>
+          <span><strong>Botulinum toxin (Botox):</strong> A LED terápia kollagéntermelést stimulál, míg a Botox a mimikai mozgásokat csökkenti. Ez a kombináció természetesebb eredményt adhat.</span>
+        </li>
+        <li>
+          <span class="synergy-check">✓</span>
+          <span><strong>Hialuronsavas töltések:</strong> A fényterápia támogatja a bőrminőség javítását a töltés körül, fokozva az eredmény esztétikai értékét.</span>
+        </li>
+        <li>
+          <span class="synergy-check">✓</span>
+          <span><strong>Lézer/RF/HIFU kezelések:</strong> A vörös és NIR fény gyorsítja a sebgyógyulást, csökkenti a gyulladást és a downtime-ot energiaalapú kezelések után.</span>
+        </li>
+        <li>
+          <span class="synergy-check">✓</span>
+          <span><strong>Bőrmegújító kúrák:</strong> Fenntartó terápia a kúrák közötti időszakban, megelőzve a bőr visszaesését stimulálatlan állapotba.</span>
+        </li>
+      </ul>
+
+      <p style="margin-top: 24px; padding: 20px; background: rgba(0,180,216,0.1); border-left: 3px solid var(--cyan); font-style: italic;">
+        <strong>Fontos:</strong> A fenti szinergiák általános LED terápia és fotobiomoduláció kutatásokon alapulnak, nem termékspecifikus klinikai vizsgálatokon. Minden páciens esetében egyedi konzultáció szükséges.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <p>Fotobiomoduláció & LED Terápia · Orvosi Edukációs Infografika · 2026</p>
+  <p style="margin-top:8px; color: rgba(255,255,255,0.3); font-size:0.75rem;">Forrás: Általános LED terápia és fotobiomoduláció szakirodalom. Az Ultima termékspecifikációk a gyártó hivatalos anyagain alapulnak. Ez az anyag tájékoztató jellegű, nem helyettesíti az orvosi tanácsadást.</p>
+  <br>
+  <small>© The Ultimate Beauty · Ultima Solution · Minden jog fenntartva</small>
+</footer>
+
+<script>
+  // Scroll-alapú fade-up animáció
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
